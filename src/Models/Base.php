@@ -15,7 +15,7 @@ class Base
 
     function __construct()
     {
-        $this->microBlogTable = new MicroBlogUsers();
+    $this->microBlogTable = new MicroBlogUsers();
         $this->microBlogTable->timestamps = false;
         $this->microBlogMessagesTable = new MicroBlogMessages();
         $this->microBlogMessagesTable->timestamps = false;

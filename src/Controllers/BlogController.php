@@ -10,8 +10,7 @@ class BlogController extends BaseController
         $massageModel = new Message();
         $imageModel = new \App\Models\Image();
 
-
-        $allMessages = $massageModel->getAll();
+          $allMessages = $massageModel->getAll();
 
         $userId = $this->auth->user()['id'];
         if($_POST){
@@ -23,7 +22,7 @@ class BlogController extends BaseController
             $massageModel->add($userId,$_POST['text']);
             $this->redirect('blog');
         }
-        $this->render('front/blog',['messages'=>$allMessages]);
+        $this->renderTwig('front/blog',['messages'=>$allMessages]);
 
     }
 

@@ -26,7 +26,7 @@ class Message extends \App\Models\Base
         $result = $this->microBlogMessagesTable
             ->newQuery()
             ->join('users', 'users.id', '=', 'messages.author_id')
-            ->select('messages.id', 'text', 'created_at', 'name')
+            ->select('messages.id', 'text', 'messages.created_at', 'name')
             ->orderByDesc('id')
             ->limit(3)
             ->get()

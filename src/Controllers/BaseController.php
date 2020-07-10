@@ -3,6 +3,8 @@ namespace App\Controllers;
 
 
 use App\Models\Auth;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 Class BaseController
 {
@@ -18,6 +20,18 @@ Class BaseController
     {
         extract($data);
         include __DIR__ . '\..\views\\' . $template . '.php';
+    }
+
+    public function renderTwig($templateDir, $data = [])
+    {
+        $parts = explode('/', $templateDir);
+        $templateFolder = $parts[0];
+        $templateName = $parts[1];
+        $templatePath = __DIR__ . '\..\views\\' . $templateFolder;
+        $template = $templateName . ".twig";
+        $loader = new FilesystemLoader($templatePath);
+        $this->twig = new Environment($loader);
+        echo $this->twig->render($template, $data);
     }
 
     protected function redirect($url)

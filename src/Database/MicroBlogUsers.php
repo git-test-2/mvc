@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class MicroBlogUsers extends Eloquent
 {
-    protected $table = 'micro_blog';
+    protected $table = 'users';
 }
